@@ -33,8 +33,7 @@ class App extends React.Component {
     var options = {
       "key": process.env.REACT_APP_razorpaytest_id,
       "amount": 0, // 2000 paise = INR 20, amount in paisa
-      "name": "",
-      "description": "",
+      "name": "Merchant Name",
       'order_id':"",
       "handler": function(response) {
           console.log(response);
@@ -47,14 +46,6 @@ class App extends React.Component {
           axios.post('http://localhost:5000/upgrade/payment',values)
           .then(res=>{alert("Success")})
           .catch(e=>console.log(e))
-      },
-      "prefill":{
-          "name":'Sanjana Kumari',
-          "email":'sanjana@gmail.com',
-          "contact":'1234567890',
-      },
-      "notes": {
-        "address": "Hello World"
       },
       "theme": {
         "color": "#528ff0"
@@ -75,8 +66,8 @@ class App extends React.Component {
 
   render(){
     return (
-    <div>
-      Enter the amount:<input type="number" name="amount" onChange={this.handleChange}></input>
+    <div style={{paddingLeft:"500px",paddingTop:"250px"}}>
+      Enter the amount:<input type="number" name="amount" onChange={this.handleChange}/>
       <button onClick={(e)=>{this.openPayModal(this.state.amount)}}>Upgrade</button>
     </div>
   );
